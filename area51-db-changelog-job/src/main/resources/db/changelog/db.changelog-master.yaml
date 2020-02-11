@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: area51-participant
+      author: michaeltecourt
+      changes:
+        - createTable:
+            tableName: participant
+            columns:
+              - column:
+                  name: id
+                  type: VARCHAR(255)
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: VARCHAR(255)

@@ -1,0 +1,82 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.cloud</groupId>
+        <artifactId>spring-cloud-starter-parent</artifactId>
+        <version>Greenwich.SR3</version>
+        <relativePath /> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>com.dreev.area51</groupId>
+    <artifactId>area51</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <modules>
+        <module>area51-db-changelog-job</module>
+        <module>area51-http-api-server</module>
+    </modules>
+
+    <properties>
+        <java.version>11</java.version>
+        <testcontainers-springboot.version>1.26</testcontainers-springboot.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>com.dreev.area51</groupId>
+                <artifactId>area51-db-changelog-job</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.dreev.area51</groupId>
+                <artifactId>area51-http-api-server</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.playtika.testcontainers</groupId>
+                <artifactId>embedded-postgresql</artifactId>
+                <version>${testcontainers-springboot.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.playtika.testcontainers</groupId>
+                <artifactId>embedded-rabbitmq</artifactId>
+                <version>${testcontainers-springboot.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <!-- Add a qualifier to the executable jar so we can import the 
+                        regular jar file for tests -->
+                    <configuration>
+                        <classifier>exec</classifier>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+</project>

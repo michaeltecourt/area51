@@ -1,0 +1,9 @@
+embedded:
+  postgresql:
+    dockerImage: "postgres:9.6.12"
+  rabbitmq:
+    dockerImage: "rabbitmq:3.5.3"
+
+logging:
+  level:
+    org.testcontainers.shaded.org.zeroturnaround.exec.ProcessExecutor: OFF

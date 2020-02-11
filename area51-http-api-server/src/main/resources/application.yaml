@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: area51-http-api
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        temp.use_jdbc_metadata_defaults: false
+
+management:
+  server:
+    add-application-context-header: false
+  endpoints:
+    web:
+      exposure:
+        include: health,info,env,metrics,beans,configprops
+  endpoint:
+    health:
+      show-details: when_authorized
+      roles: ACTUATOR
+
+dreev:
+  area51:
+    amqp:
+      exchange: participants
+      # routing-key: participants.registered

@@ -1,0 +1,1 @@
+INSERT INTO participant(id, name) VALUES ('jj', 'Jonah Jameson');
